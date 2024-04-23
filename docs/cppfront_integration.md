@@ -23,7 +23,7 @@ the latest MinGW ld.exe (GNU binutils 2.40) distributed by msys2 fails to link c
 compiling with optimizations off (Debug mode). If you're building in Debug mode with MinGW g++,
 you must use the `-fuse-ld=lld` flag to use LLVM's lld linker in place of ld (need to install Clang first).
 
-**You must set the CMake options `-DGCMAKE_ADDITIONAL_COMPILER_FLAGS='fuse-ld=lld'` and `-DGCMAKE_ADDITIONAL_LINK_TIME_FLAGS='-fuse-ld=lld'` if compiling with MinGW.**
+**You must set the CMake options `-DGCMAKE_ADDITIONAL_COMPILER_FLAGS='-fuse-ld=lld'` and `-DGCMAKE_ADDITIONAL_LINK_TIME_FLAGS='-fuse-ld=lld'` if compiling with MinGW.**
 
 See the [GCMake cppfront configuration README](https://github.com/scupit/gcmake-dependency-configs/blob/develop/cppfront/README.md) for full details.
 

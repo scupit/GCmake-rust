@@ -99,6 +99,7 @@ The command set for viewing project metadata.
 
 #### Other CMake projects
 
+- [ ] [flux](https://github.com/tcbrindle/flux?tab=readme-ov-file) sequence-oriented programming library
 - [ ] [cppcoro (maintained fork)](https://github.com/andreasbuhr/cppcoro)
 - [x] [libwebsockets](https://github.com/warmcat/libwebsockets)
 - [ ] [lpq++](https://github.com/jtv/libpqxx) PostgreSQL C++ client API

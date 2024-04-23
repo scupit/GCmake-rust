@@ -444,10 +444,14 @@ macro( initialize_mingw_dll_install_options )
     "libatomic-1.dll"
   )
 
-  if( DEFINED CMAKE_C_COMPILER )
+  # Quotes are required when checking IS_ABSOLUTE. IS_ABSOLUTE only operates on path strings,
+  # and doesn't seem to dereference "variables".
+  if( DEFINED CMAKE_C_COMPILER AND IS_ABSOLUTE "${CMAKE_C_COMPILER}" )
     cmake_path( GET CMAKE_C_COMPILER PARENT_PATH MINGW_DLL_DIR )
-  else()
+  elseif( DEFINED CMAKE_CXX_COMPILER AND IS_ABSOLUTE "${CMAKE_CXX_COMPILER}" )
     cmake_path( GET CMAKE_CXX_COMPILER PARENT_PATH MINGW_DLL_DIR )
+  else()
+    message(FATAL_ERROR "Unable to initialize MINGW DLL options because an absolute path to a C or C++ compiler could not be retrieved. (This situation should be unreachable).\n\tC compiler: ${CMAKE_C_COMPILER}\n\tC++ compiler: ${CMAKE_CXX_COMPILER}")
   endif()
 
   foreach( dll_name matching_file IN ZIP_LISTS _MINGW_DLL_NAME _CORRESPONDING_FILES )
